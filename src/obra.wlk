@@ -1,3 +1,6 @@
+import obrero.*
+import uocra.*
+
 class Obra {
 	var property ladrillos
 	var property metrosDeCanio
@@ -5,6 +8,7 @@ class Obra {
 	var property cinta
 	var property fosforos
 	var property arandelas
+	var property efectivoObra
 	
 	var plantillaObreros = #{}
 
@@ -57,6 +61,17 @@ class Obra {
 
 	method consumirArandelas(cant) {
 		arandelas = arandelas - cant
+	}
+	
+	method deuda(obrero) = obrero.debeCobrar()
+	
+	method pagarDeuda(obrero) {
+		efectivoObra-=self.deuda(obrero)
+		obrero.cancelarDeuda()
+	}
+	
+	method deudaTotal() {
+		return (plantillaObreros.sum(){ ob=>ob.debeCobrar() })
 	}
 
 }

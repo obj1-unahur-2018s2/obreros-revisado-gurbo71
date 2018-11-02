@@ -1,0 +1,47 @@
+import obra.*
+import obrero.*
+import uocra.*
+
+// auto-generated at 01/11/2018 20:20:32
+test "exported test from REPL session" {
+	
+		const obra = new Obra()
+		const albanil1 = new Albanil()
+		const albanil2 = new Albanil()
+		const gasista1 = new Gasista()
+		const gasista2 = new Gasista()
+		const plomero = new Plomero()
+		const electricista = new Electricista()
+	
+			obra.ladrillos(1000)
+			obra.metrosDeCanio(400)
+			obra.fosforos(8000)
+			obra.arandelas(500)
+			obra.metrosDeCable(2000)
+			obra.cinta(200)
+			
+			obra.agregarObrero(albanil1)
+			obra.agregarObrero(albanil2)
+			obra.agregarObrero(gasista1)
+			obra.agregarObrero(gasista2)
+			obra.agregarObrero(plomero)
+			obra.agregarObrero(electricista)
+			
+			albanil1.estaDeLicencia(true)
+			obra.registrarJornada()
+	
+	
+			obra.efectivoObra(100000)
+			albanil1.estaDeLicencia(false)
+			plomero.estaDeLicencia(true)	
+			obra.registrarJornada()
+	
+	
+	obra.deuda(albanil1)
+	obra.deuda(albanil2)
+	obra.deuda(gasista1)
+	obra.deuda(gasista2)
+	obra.deuda(electricista)
+	obra.deuda(plomero)
+	
+}

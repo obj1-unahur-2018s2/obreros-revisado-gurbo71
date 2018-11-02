@@ -1,10 +1,13 @@
 import obra.*
+import uocra.*
 
 class Obrero {
 	var property estaDeLicencia = false
-	var cantDias = 0
+	var sumaJornada = 0
 	
-	method trabajarEn(obra) { cantDias++ }
+	method trabajarEn(obra) { sumaJornada++ }
+	method debeCobrar()
+	method cancelarDeuda() { sumaJornada = 0 }
 }
 
 class Albanil inherits Obrero {
@@ -14,6 +17,8 @@ class Albanil inherits Obrero {
 		super(obra)
 		obra.consumirLadrillos(consumoLadrillos)
 	}
+	override method debeCobrar() = (uocra.jornalAlbanil() * sumaJornada)
+	
 }
 
 class Electricista inherits Obrero {
@@ -25,6 +30,7 @@ class Electricista inherits Obrero {
 		obra.consumirMetrosDeCable(consumoMetrosCable)
 		obra.consumirCinta(consumoCintaAisladora)
 	}
+	override method debeCobrar() = (uocra.jornalElectricista() * sumaJornada)
 }
 
 
@@ -37,6 +43,7 @@ class Gasista inherits Obrero {
 		obra.consumirMetrosDeCanio(consumoMetrosCanios)
 		obra.consumirFosforos(consumoFosforos)
 	}
+	override method debeCobrar() = (uocra.jornalGasista() * sumaJornada)
 }
 
 
@@ -49,4 +56,5 @@ class Plomero inherits Obrero {
 		obra.consumirMetrosDeCanio(consumoMetrosCanio)
 		obra.consumirArandelas(consumoArandelas)
 	}
+	override method debeCobrar() = (uocra.jornalPlomero() * sumaJornada)
 }
